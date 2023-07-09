@@ -1,6 +1,14 @@
 import json
-from models.machine import Inserttable, db
+from sqlalchemy import select
+from models.base.StartDBModel import db
+from models.platformsModel import Plataformas
 
 class TestService:
     def index():
-        return "Testing service"
+        allPlatforms = db.session.query(Plataformas).all()
+        
+        namePlatforms = []
+        for platforms in allPlatforms:
+            namePlatforms.append(platforms.nome)
+        
+        return namePlatforms

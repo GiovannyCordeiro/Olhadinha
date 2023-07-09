@@ -1,5 +1,5 @@
 import json
-from models.machine import db
+# from models.machine import db
 from services.first_service import TestService
 
 class TestController:
@@ -7,4 +7,4 @@ class TestController:
         return {
         'status': 'OK',
         'data': TestService.index()
-    }
+        }

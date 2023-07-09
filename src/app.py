@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_migrate import Migrate
 from routes.blueprint import blueprint
-from models.machine import db
+from models.base.StartDBModel import db
 
 load_dotenv()
 
