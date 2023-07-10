@@ -9,10 +9,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 
-# Dev
-# SQLALCHEMY_DATABASE_URI = f"postgresql://{os.environ['USERDB']}:{os.environ['PASSWORDDB']}@{os.environ['LOCALDB']}/{os.environ['NAMEDB']}"
-
-# prod
-SQLALCHEMY_DATABASE_URI = os.environ['DB_CONECTION']
+SQLALCHEMY_DATABASE_URI = f"postgresql://{os.environ['USERDB']}:{os.environ['PASSWORDDB']}@{os.environ['LOCALDB']}/{os.environ['NAMEDB']}"
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
