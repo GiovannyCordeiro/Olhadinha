@@ -1,4 +1,11 @@
 from services.first_service import TestService
+from app import App
 
 def test_index():
-    assert TestService.sumNum(10) == 20
+    app = App().create_app()
+    app.app_context().push()
+    assert TestService.index() == [
+		"meliuz",
+		"cuponomia",
+		"intershop"
+	]
