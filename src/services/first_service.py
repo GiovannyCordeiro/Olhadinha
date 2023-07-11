@@ -12,3 +12,6 @@ class TestService:
             namePlatforms.append(platforms.nome)
         
         return namePlatforms
+    
+    def sumNum(number):
+        return number + 10
