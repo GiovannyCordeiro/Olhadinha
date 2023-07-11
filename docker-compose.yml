@@ -1,6 +1,10 @@
 name: Python package
 
-on: [push]
+on: 
+  push:
+    branches: [ ci_docker ]
+  pull_request:
+    branches: [ ci_docker ]
 
 jobs:
   build:
