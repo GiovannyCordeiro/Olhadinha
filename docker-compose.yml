@@ -1,4 +1,4 @@
-name: Python package
+version: "3.9"
 
 volumes:
   data:
