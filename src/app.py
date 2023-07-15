@@ -17,7 +17,6 @@ class App:
         db.init_app(app)
         return app
     
-    
     def run(self):
         self.app.register_blueprint(blueprint, url_prefix='/')
         if __name__ == '__main__':
