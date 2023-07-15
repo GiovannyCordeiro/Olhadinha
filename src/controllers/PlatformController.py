@@ -1,6 +1,10 @@
+from services.CuponomiaService import CuponomiaService
+
 class PlatformController:
-    def searchPlataforms(store):
+    def searchPlatforms(store):
         return {
             'status': 'OK',
-            'data': f"{store}"
+            'cashbackPlatfomrs': {
+                'cuponomia': CuponomiaService.extract(store)
+            }
         }
