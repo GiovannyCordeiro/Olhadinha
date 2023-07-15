@@ -5,4 +5,4 @@ from controllers.PlatformController import PlatformController
 blueprint = Blueprint('blueprint', __name__)
 
 blueprint.route('/', methods=['GET'])(TestController.index)
-blueprint.route('/platform/<platform>', methods=['GET'])(PlatformController.searchPlataforms)
+blueprint.route('/platform/<store>', methods=['GET'])(PlatformController.searchPlataforms)

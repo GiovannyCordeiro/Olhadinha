@@ -1,6 +1,6 @@
 class PlatformController:
-    def searchPlataforms(platform):
+    def searchPlataforms(store):
         return {
             'status': 'OK',
-            'data': f"{platform}"
+            'data': f"{store}"
         }
