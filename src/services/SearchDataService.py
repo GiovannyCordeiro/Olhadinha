@@ -7,6 +7,8 @@ class SearchDataConsult:
     def meta(store):
         currentTime = datetime.now()
         threeHoursAgo = currentTime - timedelta(hours=3)
-        ruleScrapping = db.session.execute(db.select(dadosCashback).where(dadosCashback.created_at >= threeHoursAgo)).scalars()
-        dataSerialized = json.dumps(ruleScrapping.all())
-        return dataSerialized
+        ruleScrapping = db.session.execute(
+            db.select(dadosCashback).where(dadosCashback.created_at >= threeHoursAgo)
+        ).scalars()
+        listData = ruleScrapping.all()
+        return listData
