@@ -10,7 +10,7 @@ class PlatformController:
             'status': 'OK',
             'cashbackPlatfomrs': {
                 "Lorem ipsum": "DOLOR",
-                "test": VerifyExistsDataService.search()
+                "test": f"{VerifyExistsDataService.search(store,'meliuz')}"
                 # 'Cuponomia': CuponomiaService.extract(store),
                 # 'Zoon': ZoomService.extract(store)
             }
