@@ -1,12 +1,17 @@
 from services.CuponomiaService import CuponomiaService
 from services.ZoomService import ZoomService
+from services.VerifyExistsDataService import VerifyExistsDataService
 
 class PlatformController:
-    def searchPlatforms(store):
+
+    @classmethod
+    def searchPlatforms(cls,store):
         return {
             'status': 'OK',
             'cashbackPlatfomrs': {
-                'Cuponomia': CuponomiaService.extract(store),
-                'Zoon': ZoomService.extract(store)
+                "Lorem ipsum": "DOLOR",
+                "test": VerifyExistsDataService.search()
+                # 'Cuponomia': CuponomiaService.extract(store),
+                # 'Zoon': ZoomService.extract(store)
             }
         }
