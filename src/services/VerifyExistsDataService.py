@@ -24,5 +24,5 @@ class VerifyExistsDataService:
         ).scalars()
         allData = data.all()
 
-        print("data", allData)
+        # print("data", allData)
         return allData
