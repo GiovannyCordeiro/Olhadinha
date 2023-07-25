@@ -10,9 +10,10 @@ services:
       dockerfile: Dockerfile
     restart: always
     environment:
-      - PYTHONUNBUFFERED=1
-      - PYTHONDONTWRITEBYTECODE=1
-      - DBCONNECTION=postgresql://postgres:postgres@192.168.0.102:5433/public
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+      DBCONNECTION: postgresql://postgres:postgres@192.168.0.102:5433/public
+      PYTHONPATH: /src
     volumes:
       - ./src:/src
     ports:
