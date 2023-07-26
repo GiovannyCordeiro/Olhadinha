@@ -2,9 +2,9 @@ from flask import Blueprint
 from controllers.TestController import TestController
 from controllers.PlatformController import PlatformController
 
-from services.dataSearchIntermediaryService import dataSearchIntermediaryService
+from services.DataSearchIntermediaryService import DataSearchIntermediaryService
 
 blueprint = Blueprint('blueprint', __name__)
 
-blueprint.route('/', methods=['GET'])(dataSearchIntermediaryService.getAllPlatforms)
+blueprint.route('/', methods=['GET'])(DataSearchIntermediaryService.getAllPlatforms)
 blueprint.route('/platform/<store>', methods=['GET'])(PlatformController.searchPlatforms)

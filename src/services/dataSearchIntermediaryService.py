@@ -10,7 +10,7 @@ import json
 # print(plataformas)
 
 # servico intermediador entre consultas do banco e raspagens
-class dataSearchIntermediaryService:
+class DataSearchIntermediaryService:
 
     def getAllPlatforms():
         data = db.session.execute(
