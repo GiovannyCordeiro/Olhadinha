@@ -7,5 +7,6 @@ def test_index():
     assert TestService.index() == [
 		"meliuz",
 		"cuponomia",
-		"intershop"
+		"intershop",
+        "zoom"
 	]
