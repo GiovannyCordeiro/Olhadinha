@@ -3,8 +3,11 @@ from models.platformsModel import Plataformas
 
 from services.VerifyExistsDataService import VerifyExistsDataService
 
+from services.CuponomiaService import CuponomiaService
+from services.ZoomService import ZoomService
+
 class DataSearchIntermediaryService:
-    allPlataforms = []
+    allPlatforms = []
     responseUser = {}
 
     @classmethod
@@ -14,16 +17,19 @@ class DataSearchIntermediaryService:
         ).scalars()
         responseDB = data.all()
         for value in responseDB:
-            cls.allPlataforms.append(value.nome)
-        return cls.allPlataforms
+            cls.allPlatforms.append(value.nome)
+        return cls.allPlatforms
 
     @classmethod
-    def consultCashbackData(cls):
+    def consultCashbackData(cls, store:str):
         cls.getAllPlatforms()
-        for platform in cls.allPlataforms:
-            result = VerifyExistsDataService.search('amazon', platform)
+        for platform in cls.allPlatforms:
+            result = VerifyExistsDataService.search(store, platform)
             if(result == False):
-                ''
-            # se count(data) for maior que um, retorna o dado para uma estrutura
-            # se o count for 0, executa o scrapping e retona o dado
-        return 'return'
+                if(platform == 'cuponomia'):
+                    cls.responseUser[f"{platform}"] = CuponomiaService.extract(store)
+                if(platform == 'zoom'):
+                    cls.responseUser[f"{platform}"] = ZoomService.extract(store)
+                continue
+            cls.responseUser[f"{platform}"] = result.porcentagem
+        return cls.responseUser
