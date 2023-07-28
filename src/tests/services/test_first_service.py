@@ -8,5 +8,5 @@ def test_index():
 		"meliuz",
 		"cuponomia",
 		"intershop",
-        "zoom"
+    "zoom"
 	]
