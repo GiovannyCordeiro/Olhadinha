@@ -22,5 +22,8 @@ class App:
         if __name__ == '__main__':
             self.app.run(host=os.environ['HOST'], port=os.environ['PORT'], debug=True)
 
+    def get_app(self):
+        return self.app
+
 app = App()
 app.run()
