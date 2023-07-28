@@ -13,7 +13,7 @@ class VerifyExistsDataService:
         return threeHrsAgo
 
     @classmethod
-    def search(self, store:str, platform:str)->list:
+    def search(self, store:str, platform:str)->bool:
         threeHrsAgo = self.dateMinusThreeHrs()
         
         data = db.session.execute(
@@ -23,6 +23,6 @@ class VerifyExistsDataService:
             )
         ).scalars()
         allData = data.all()
-
-        # print("data", allData)
-        return allData
+        if(len(allData) == 0):
+            return False
+        return True

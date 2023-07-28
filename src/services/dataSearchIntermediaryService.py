@@ -3,28 +3,27 @@ from models.platformsModel import Plataformas
 
 from services.VerifyExistsDataService import VerifyExistsDataService
 
-import json
-
-# data = db.session.execute(db.select(Plataformas)).scalars()
-# plataformas = data.all()
-# print(plataformas)
-
-# servico intermediador entre consultas do banco e raspagens
 class DataSearchIntermediaryService:
+    allPlataforms = []
+    responseUser = {}
 
-    def getAllPlatforms():
+    @classmethod
+    def getAllPlatforms(cls):
         data = db.session.execute(
             db.select(Plataformas)
         ).scalars()
-        plataformas = data.all()
-        return json.dumps(f"{plataformas[0].nome}")
-        # return plataformas
+        responseDB = data.all()
+        for value in responseDB:
+            cls.allPlataforms.append(value.nome)
+        return cls.allPlataforms
 
-    def save(self):
-        allPlatforms = self.getAllPlatforms()
-        for platform in allPlatforms:
-            data = VerifyExistsDataService.search('amazon', platform.nome)
+    @classmethod
+    def consultCashbackData(cls):
+        cls.getAllPlatforms()
+        for platform in cls.allPlataforms:
+            result = VerifyExistsDataService.search('amazon', platform)
+            if(result == False):
+                ''
             # se count(data) for maior que um, retorna o dado para uma estrutura
             # se o count for 0, executa o scrapping e retona o dado
-            ''
-        'return'
+        return 'return'
