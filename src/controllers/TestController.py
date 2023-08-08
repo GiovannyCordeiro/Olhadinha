@@ -6,5 +6,5 @@ class TestController:
     def index():
         return {
         'status': 'OK',
-        'data': TestService.index()
+        'data': "WELCOME TO API FOR DATA CONTROLLINg"
         }
