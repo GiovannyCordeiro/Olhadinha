@@ -2,7 +2,7 @@ import json
 # from models.machine import db
 from services.first_service import TestService
 
-class TestController:
+class IndexController:
     def index():
         return {
         'status': 'OK',
