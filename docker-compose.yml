@@ -3,8 +3,16 @@ version: "3.9"
 volumes:
   data:
 
+networks:
+  app:
+  database:
+
 services:
   app:
+    depends_on:
+      - database
+    links:
+      - database:database
     build: 
       context: .
       dockerfile: Dockerfile
@@ -12,7 +20,7 @@ services:
     environment:
       PYTHONUNBUFFERED: 1
       PYTHONDONTWRITEBYTECODE: 1
-      DBCONNECTION: postgresql://postgres:postgres@192.168.0.102:5433/public
+      DBCONNECTION: postgresql://postgres:postgres@database:5432/postgres
       PYTHONPATH: /src
     volumes:
       - ./src:/src
@@ -20,6 +28,9 @@ services:
       - 8080:8080
     container_name: olhadinha_back_end
     command: sh -c "python app.py -B -m flask --app app run --debug"
+    networks:
+      - app
+      - database
 
   database:
     image: postgres:15.3
@@ -28,6 +39,8 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: public
     ports:
-      - 5433:5432
+      - 5432:5433
     volumes:
       - data:/var/lib/postgresql/data
+    networks:
+      - database
