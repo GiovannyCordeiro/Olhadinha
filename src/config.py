@@ -7,5 +7,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 
 SQLALCHEMY_DATABASE_URI = os.getenv('DBCONNECTION')
+print("DbConnection Testd", SQLALCHEMY_DATABASE_URI)
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False

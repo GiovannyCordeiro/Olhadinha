@@ -10,6 +10,8 @@ load_dotenv()
 class App:
     def __init__(self):
         self.app = self.create_app()
+        print("host", os.environ['HOST'])
+        print("port", os.environ['PORT'])
     
     def create_app(self):
         app = Flask(__name__)
