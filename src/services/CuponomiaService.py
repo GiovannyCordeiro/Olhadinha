@@ -10,5 +10,5 @@ class CuponomiaService:
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
         textElement = soup.find(class_="rewardsTag-cashback").text
-        cashbackPercentage = textElement[8:9]
+        cashbackPercentage = textElement[12:13]
         return int(cashbackPercentage)
