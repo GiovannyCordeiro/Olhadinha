@@ -1,6 +1,6 @@
 from models.base.StartDBModel import db
-from models.dadosCashbackModel import DadosCashback
-from models.platformsModel import Plataformas
+from models.entities.dadosCashbackModel import DadosCashback
+from models.entities.platformsModel import Plataformas
 from helpers.Plataforms import indexPlatformsDB
 
 from datetime import datetime, timedelta

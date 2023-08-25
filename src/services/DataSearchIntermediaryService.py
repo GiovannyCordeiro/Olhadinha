@@ -1,5 +1,5 @@
 from models.base.StartDBModel import db
-from models.platformsModel import Plataformas
+from models.entities.platformsModel import Plataformas
 
 from services.VerifyExistsDataService import VerifyExistsDataService
 
