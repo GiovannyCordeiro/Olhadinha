@@ -1,8 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+from services.SavingDataService import SavingDataService
 
 class ZoomService:
-    def extract(store):
+    def extract(store:str):
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0"
         }
@@ -11,4 +12,5 @@ class ZoomService:
         soup = BeautifulSoup(response.text, 'html.parser')
         specifElement = soup.find_all('strong')[1].text
         cashbackPercentage = specifElement[1:4]
+        SavingDataService.save(store, 4, cashbackPercentage)
         return cashbackPercentage
