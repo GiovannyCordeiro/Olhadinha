@@ -4,7 +4,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.sql import func
 
 class DadosCashback(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     porcentagem = db.Column(db.String)
     plataforma = db.Column(db.Integer, ForeignKey(Plataformas.id))
     loja = db.Column(db.String)
