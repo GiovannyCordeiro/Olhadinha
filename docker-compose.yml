@@ -20,7 +20,7 @@ services:
     environment:
       PYTHONUNBUFFERED: 1
       PYTHONDONTWRITEBYTECODE: 1
-      DBCONNECTION: postgresql://postgres:postgres@database:5432/postgres
+      DBCONNECTION: postgresql+psycopg2://postgres:postgres@database:5432/postgres
       PYTHONPATH: /src
     volumes:
       - ./src:/src
