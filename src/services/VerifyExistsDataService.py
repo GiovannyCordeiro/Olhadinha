@@ -17,7 +17,7 @@ class VerifyExistsDataService:
         threeHrsAgo = self.dateMinusThreeHrs()
         
         data = db.session.execute(
-            db.select(DadosCashback).where((DadosCashback.created_at <= threeHrsAgo) &
+            db.select(DadosCashback).where((DadosCashback.created_at >= threeHrsAgo) &
                 (DadosCashback.loja == store) &
                 (DadosCashback.plataforma == indexPlatformsDB[f"{platform}"])
             )
