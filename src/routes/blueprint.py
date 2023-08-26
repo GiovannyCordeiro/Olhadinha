@@ -8,4 +8,4 @@ blueprint = Blueprint('blueprint', __name__)
 
 blueprint.route('/<store>', methods=['GET'])(DataSearchIntermediaryService.consultCashbackData)
 blueprint.route('/platform/<store>', methods=['GET'])(PlatformController.searchPlatforms)
-blueprint.route('/platform/<store>', methods=['GET'])(IndexController.index)
+blueprint.route('/', methods=['GET'])(IndexController.index)
