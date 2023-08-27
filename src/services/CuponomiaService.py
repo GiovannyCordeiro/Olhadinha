@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+from services.SavingDataService import SavingDataService
+from helpers.Plataforms import indexPlatformsDB
 
 class CuponomiaService:
     def extract(store:str):
@@ -11,5 +13,5 @@ class CuponomiaService:
         soup = BeautifulSoup(response.text, 'html.parser')
         textElement = soup.find(class_="rewardsTag-cashback").text
         cashbackPercentage = textElement[8:9]
-        print(cashbackPercentage)
+        SavingDataService.save(store, indexPlatformsDB['cuponomia'], cashbackPercentage)
         return int(cashbackPercentage)
