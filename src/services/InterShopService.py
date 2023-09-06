@@ -19,5 +19,3 @@ class InterShopService:
         dataCashback = re.split("%", extractCashBack)[0]
         SavingDataService.save(store, indexPlatformsDB['intershop'], float(dataCashback))
         return float(dataCashback)
-
-InterShopService.extract('amazon')
