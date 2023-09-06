@@ -5,6 +5,7 @@ from services.VerifyExistsDataService import VerifyExistsDataService
 
 from services.CuponomiaService import CuponomiaService
 from services.ZoomService import ZoomService
+from services.InterShopService import InterShopService
 
 class DataSearchIntermediaryService:
     allPlatforms = []
@@ -30,6 +31,8 @@ class DataSearchIntermediaryService:
                     cls.responseUser[f"{platform}"] = CuponomiaService.extract(store)
                 if(platform == 'zoom'):
                     cls.responseUser[f"{platform}"] = ZoomService.extract(store)
+                if(platform == 'intershop'):
+                    cls.responseUser[f"{platform}"] = InterShopService.extract(store)
                 continue
             cls.responseUser[f"{platform}"] = result.porcentagem
         return cls.responseUser
