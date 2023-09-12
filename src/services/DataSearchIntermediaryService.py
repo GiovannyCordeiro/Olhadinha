@@ -2,10 +2,7 @@ from models.base.StartDBModel import db
 from models.entities.platformsModel import Plataformas
 
 from services.VerifyExistsDataService import VerifyExistsDataService
-
-from services.CuponomiaService import CuponomiaService
-from services.ZoomService import ZoomService
-from services.InterShopService import InterShopService
+from services.FiringPlatformService import FirePlatform
 
 class DataSearchIntermediaryService:
     allPlatforms = []
@@ -27,12 +24,7 @@ class DataSearchIntermediaryService:
         for platform in cls.allPlatforms:
             result = VerifyExistsDataService.search(store, platform)
             if(result == False):
-                if(platform == 'cuponomia'):
-                    cls.responseUser[f"{platform}"] = CuponomiaService.extract(store)
-                if(platform == 'zoom'):
-                    cls.responseUser[f"{platform}"] = ZoomService.extract(store)
-                if(platform == 'intershop'):
-                    cls.responseUser[f"{platform}"] = InterShopService.extract(store)
+                cls.responseUser[f"{platform}"] = FirePlatform.logic[f"{platform}"](store)
                 continue
             cls.responseUser[f"{platform}"] = result.porcentagem
         return cls.responseUser
