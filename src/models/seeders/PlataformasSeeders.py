@@ -7,7 +7,8 @@ platformas = [
     Plataformas(nome="meliuz"),
     Plataformas(nome="cuponomia"),
     Plataformas(nome="intershop"),
-    Plataformas(nome="zoom")
+    Plataformas(nome="zoom"),
+    Plataformas(nome="meudimdim")
 ]
 
 with app.app.app_context():
