@@ -14,5 +14,5 @@ class TestClass:
 
     def test_response_type_consultCashbackData(self):
         with app.get_app().app_context():
-            response = DataSearchIntermediaryService.consultCashbackData('amazon')
+            response = DataSearchIntermediaryService.consultCashbackData('extra')
             assert type(response) == dict
