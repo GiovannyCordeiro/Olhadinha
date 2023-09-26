@@ -1,6 +1,5 @@
 from flask import Blueprint
 from controllers.IndexController import IndexController
-# from controllers.PlatformController import PlatformController
 
 from services.DataSearchIntermediaryService import DataSearchIntermediaryService
 
