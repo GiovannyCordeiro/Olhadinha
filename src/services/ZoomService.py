@@ -11,7 +11,7 @@ class ZoomService:
         url = f"https://www.zoom.com.br/landing-page/cashback-zoom-{store}"
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
-        specifElement = soup.find_all('strong')[1].text
-        cashbackPercentage = specifElement[1:4]
+        specificElement = soup.find_all('strong')[1].text
+        cashbackPercentage = specificElement[1:4]
         SavingDataService.save(store, indexPlatformsDB['zoom'], cashbackPercentage)
         return cashbackPercentage

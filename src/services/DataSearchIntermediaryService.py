@@ -19,7 +19,7 @@ class DataSearchIntermediaryService:
         return cls.allPlatforms
 
     @classmethod
-    def consultCashbackData(cls, store:str)->dict:
+    def consultCashbackData(cls, store:str) -> dict:
         cls.getAllPlatforms()
         for platform in cls.allPlatforms:
             result = VerifyExistsDataService.search(store, platform)
