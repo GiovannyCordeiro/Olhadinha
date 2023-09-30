@@ -1,11 +1,12 @@
 from models.entities.dadosCashbackModel import DadosCashback
 from models.base.StartDBModel import db
 from app import app
+from helpers.Plataforms import indexPlatformsDB
 
 platformas = [
-    DadosCashback(porcentagem='3', plataforma=1, loja="AliExpress"),
-    DadosCashback(porcentagem='5', plataforma=2, loja="Kabum"),
-    DadosCashback(porcentagem='1', plataforma=4, loja="Amazom")
+    DadosCashback(porcentagem='3', plataforma=indexPlatformsDB['intershop'], loja="AliExpress"),
+    DadosCashback(porcentagem='5', plataforma=indexPlatformsDB['cuponomia'], loja="Kabum"),
+    DadosCashback(porcentagem='1', plataforma=indexPlatformsDB['zoom'], loja="Amazom")
 ]
 
 with app.app.app_context():

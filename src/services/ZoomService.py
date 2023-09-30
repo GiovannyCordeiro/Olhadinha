@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from services.SavingDataService import SavingDataService
 from helpers.Plataforms import indexPlatformsDB
+import re
 
 class ZoomService:
     def extract(store:str):
@@ -12,7 +13,8 @@ class ZoomService:
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
         specificElement = soup.find_all('strong')[1].text
-        cashbackPercentage = specificElement[1:4]
+        onlyPorcentage = re.split("%", specificElement)[0]
+        cashbackPercentage = onlyPorcentage[1:4]
         if cashbackPercentage == "":
             cashbackPercentage = "SNF"
         SavingDataService.save(store, indexPlatformsDB['zoom'], cashbackPercentage)
