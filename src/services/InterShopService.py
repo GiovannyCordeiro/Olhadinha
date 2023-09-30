@@ -15,7 +15,9 @@ class InterShopService:
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
         specificElement = soup.find('h1').text
-        extractCashBack = specificElement[6:8]
+        extractCashBack = specificElement[6:7]
         dataCashback = re.split("%", extractCashBack)[0]
-        SavingDataService.save(store, indexPlatformsDB['intershop'], float(dataCashback))
-        return float(dataCashback)
+        if dataCashback == " ":
+            dataCashback = "SNF"
+        SavingDataService.save(store, indexPlatformsDB['intershop'], dataCashback)
+        return dataCashback

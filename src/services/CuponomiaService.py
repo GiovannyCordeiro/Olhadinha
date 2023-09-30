@@ -11,7 +11,10 @@ class CuponomiaService:
         }
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
-        textElement = soup.find(class_="rewardsTag-cashback").text
-        cashbackPercentage = textElement[8:9]
+        textElement = soup.find(class_="rewardsTag-cashback")
+        if textElement is None:
+            cashbackPercentage = "SNF"
+        else:
+            cashbackPercentage = textElement.text[8:9]
         SavingDataService.save(store, indexPlatformsDB['cuponomia'], cashbackPercentage)
-        return int(cashbackPercentage)
+        return cashbackPercentage

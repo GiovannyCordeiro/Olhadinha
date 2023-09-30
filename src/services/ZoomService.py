@@ -13,5 +13,7 @@ class ZoomService:
         soup = BeautifulSoup(response.text, 'html.parser')
         specificElement = soup.find_all('strong')[1].text
         cashbackPercentage = specificElement[1:4]
+        if cashbackPercentage == "":
+            cashbackPercentage = "SNF"
         SavingDataService.save(store, indexPlatformsDB['zoom'], cashbackPercentage)
         return cashbackPercentage
