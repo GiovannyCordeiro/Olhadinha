@@ -2,13 +2,13 @@ from models.entities.platformsModel import Plataformas
 from models.entities.dadosCashbackModel import DadosCashback
 from models.base.StartDBModel import db
 from app import app
+from helpers.Plataforms import indexPlatformsDB
 
 platformas = [
-    Plataformas(nome="meliuz"),
-    Plataformas(nome="cuponomia"),
-    Plataformas(nome="intershop"),
-    Plataformas(nome="zoom"),
-    Plataformas(nome="meudimdim")
+    Plataformas(nome="cuponomia", id = indexPlatformsDB['cuponomia']),
+    Plataformas(nome="intershop", id = indexPlatformsDB['intershop']),
+    Plataformas(nome="zoom", id = indexPlatformsDB['zoom']),
+    Plataformas(nome="meudimdim", id = indexPlatformsDB['meudimdim'])
 ]
 
 with app.app.app_context():
