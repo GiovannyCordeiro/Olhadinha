@@ -5,9 +5,8 @@ class TestClass:
     def test_correctly_data_type(self):
         with app.get_app().app_context():
             response = InterShopService.extract("amazon")
-            assert type(response) == float
-    
-    def test_positive_numbers(self):
+            assert type(response) == str
+
+    def test_store_not_existent(self):
         with app.get_app().app_context():
-            response = InterShopService.extract("amazon")
-            assert response >= 0
+            assert InterShopService.extract('loja-da-carabina') == "SNF"

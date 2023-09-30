@@ -16,5 +16,7 @@ class MeuDimDimService:
         textElement = soup.find_all("h4")[0].text
         extractCashBack = textElement[16:18]
         dataCashback = re.split("%", extractCashBack)[0]
+        if dataCashback == "":
+            dataCashback = "SNF"
         SavingDataService.save(store, indexPlatformsDB['meudimdim'], dataCashback)
-        return float(dataCashback)
+        return dataCashback

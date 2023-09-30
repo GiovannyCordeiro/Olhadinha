@@ -4,8 +4,8 @@ from app import app
 class TestClass:
     def test_type(self):
         with app.get_app().app_context():
-            assert type(CuponomiaService.extract('Amazon')) == int
+            assert type(CuponomiaService.extract('Amazon')) == str
     
-    def test_negative(self):
+    def test_store_not_existent(self):
         with app.get_app().app_context():
-            assert CuponomiaService.extract('Amazon') >= 0
+            assert CuponomiaService.extract('loja-da-carabina') == "SNF"
