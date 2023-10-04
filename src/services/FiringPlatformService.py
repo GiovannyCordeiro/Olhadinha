@@ -3,7 +3,7 @@ from services.ZoomService import ZoomService
 from services.InterShopService import InterShopService
 from services.MeuDimDimService import MeuDimDimService
 
-class FirePlatform:
+class FireBotPlatform:
     logic = {
         'cuponomia': lambda store: CuponomiaService.extract(store),
         'zoom': lambda store: ZoomService.extract(store),

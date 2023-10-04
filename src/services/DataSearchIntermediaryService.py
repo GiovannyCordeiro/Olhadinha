@@ -2,7 +2,7 @@ from models.base.StartDBModel import db
 from models.entities.platformsModel import Plataformas
 
 from services.VerifyExistsDataService import VerifyExistsDataService
-from services.FiringPlatformService import FirePlatform
+from services.FiringPlatformService import FireBotPlatform
 
 class DataSearchIntermediaryService:
     allPlatforms = []
@@ -24,7 +24,7 @@ class DataSearchIntermediaryService:
         for platform in cls.allPlatforms:
             result = VerifyExistsDataService.search(store, platform)
             if(result == False):
-                cls.responseUser[f"{platform}"] = FirePlatform.logic[f"{platform}"](store)
+                cls.responseUser[f"{platform}"] = FireBotPlatform.logic[f"{platform}"](store)
                 continue
             cls.responseUser[f"{platform}"] = result.porcentagem
         return cls.responseUser
