@@ -2,7 +2,7 @@ FROM python:3.11
 
 LABEL name="olhadinha_back_end"
 LABEL maintainer="Giovanny Cordeiro giovannycordeiropb@gmail.com"
-LABEL description="Ambiente de desenvolvimento para o projeto"
+LABEL description="Container backend"
 LABEL version="1.0"
 
 ENV PYTHONUNBUFFERED=1

@@ -2,12 +2,34 @@ version: "3.9"
 
 volumes:
   data:
+  node_modules:
 
 networks:
+  frontend_app:
   backend_app:
   database:
 
 services:
+  frontend_app:
+    depends_on:
+      - backend_app
+    links:
+      - backend_app:backend_app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./frontend:/app
+      - node_modules:/app/node_modules
+    ports:
+      - 5173:5173
+    container_name: olhadinha_front_end
+    command: sh -c "npm run dev"
+    networks:
+      - frontend_app
+      - backend_app
+
   backend_app:
     depends_on:
       - database
