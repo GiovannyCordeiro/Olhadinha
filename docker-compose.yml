@@ -4,11 +4,11 @@ volumes:
   data:
 
 networks:
-  backed_app:
+  backend_app:
   database:
 
 services:
-  backed_app:
+  backend_app:
     depends_on:
       - database
     links:
@@ -31,7 +31,7 @@ services:
     container_name: olhadinha_back_end
     command: sh -c "python app.py -B -m flask --app app run --debug"
     networks:
-      - backed_app
+      - backend_app
       - database
 
   database:
