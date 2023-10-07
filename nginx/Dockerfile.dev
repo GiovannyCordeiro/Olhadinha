@@ -1,0 +1,7 @@
+FROM nginx:1.25.2-alpine
+
+LABEL name="Nginx Olhadinha"
+LABEL maintainer="Giovanny Cordeiro giovannycordeiropb@gmail.com"
+LABEL description="Nginx Container"
+
+COPY ./default.conf /etc/nginx/conf.d/default.conf
