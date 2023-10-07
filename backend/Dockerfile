@@ -10,7 +10,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 COPY ./requirements.txt ./requirements.txt
 
-RUN pip install -r --no-cache-dir requirements.txt
+RUN pip install -r requirements.txt
 
 RUN mkdir /src
 WORKDIR /src

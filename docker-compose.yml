@@ -4,34 +4,34 @@ volumes:
   data:
 
 networks:
-  app:
+  backed_app:
   database:
 
 services:
-  app:
+  backed_app:
     depends_on:
       - database
     links:
       - database:database
     build: 
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     restart: always
     environment:
       PYTHONUNBUFFERED: 1
       PYTHONDONTWRITEBYTECODE: 1
       DBCONNECTION: postgresql+psycopg2://postgres:postgres@database:5432/postgres
-      PYTHONPATH: /src
+      PYTHONPATH: ./backend/src
       HOST: '0.0.0.0'
       PORT: 8080
     volumes:
-      - ./src:/src
+      - ./backend/src:/src
     ports:
       - 8080:8080
     container_name: olhadinha_back_end
     command: sh -c "python app.py -B -m flask --app app run --debug"
     networks:
-      - app
+      - backed_app
       - database
 
   database:
