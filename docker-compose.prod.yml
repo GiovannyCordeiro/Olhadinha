@@ -1,0 +1,61 @@
+version: "3.9"
+
+volumes:
+  data:
+  node_modules:
+
+networks:
+  backend_app:
+  database:
+
+services:
+  nginx:
+    depends_on:
+      - backend_app
+    restart: always
+    build: 
+      context: .
+      dockerfile: Dockerfile.nginx.prod
+    ports:
+      - 8080:80
+    networks:
+      - backend_app
+    container_name: nginx_olhadinha_prod
+
+  backend_app:
+    depends_on:
+      - database
+    links:
+      - database:database
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    restart: always
+    environment:
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+      DBCONNECTION: postgresql+psycopg2://postgres:postgres@database:5432/postgres
+      PYTHONPATH: ./backend/src
+      HOST: '0.0.0.0'
+      PORT: 8080
+    volumes:
+      - ./backend/src:/src
+    container_name: back_olhadinha_prod
+    command: sh -c "gunicorn --bind 0.0.0.0:5000 app:App"
+    networks:
+      - backend_app
+      - database
+
+  database:
+    image: postgres:15.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: public
+    ports:
+      - 5433:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - database
+    container_name: DB_olhadinha_prod
