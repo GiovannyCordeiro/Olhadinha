@@ -1,0 +1,38 @@
+.header {
+    width: 100%;
+    height: 6rem;
+    background: var(--main-gray-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+}
+
+.header a img {
+    width: 10rem;
+}
+
+.list_links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.list_links li {
+    list-style: none;
+    display: flex;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+
+.list_links li a {
+    text-decoration: none;
+    color: var(--main-black-text);
+}
+
+.list_links li a:hover {
+    color: var(--main-black-text-hover);
+    transition: 0.2s ease-in-out;
+}

@@ -1,0 +1,13 @@
+:root {
+    --main-gray-color: #f2f2f2;
+    --main-black-text: #232322;
+    --main-black-text-hover: #838383;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    font-family: "Nunito", sans-serif;
+}

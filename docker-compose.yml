@@ -2,47 +2,25 @@ version: "3.9"
 
 volumes:
   data:
+  node_modules:
 
 networks:
-  app:
+  backend_app:
   database:
 
 services:
-  app:
+  nginx:
     depends_on:
-      - database
-    links:
-      - database:database
-    build: 
-      context: .
-      dockerfile: Dockerfile
+      - backend_app
     restart: always
-    environment:
-      PYTHONUNBUFFERED: 1
-      PYTHONDONTWRITEBYTECODE: 1
-      DBCONNECTION: postgresql+psycopg2://postgres:postgres@database:5432/postgres
-      PYTHONPATH: /src
-      HOST: '0.0.0.0'
-      PORT: 8080
-    volumes:
-      - ./src:/src
-    ports:
-      - 8080:8080
-    container_name: olhadinha_back_end
-    command: sh -c "python app.py -B -m flask --app app run --debug"
+    build: 
+      context: ./nginx
     networks:
-      - app
-      - database
+      - backend_app
+
+  backend_app:
+    build: 
+      context: ./backend
 
   database:
     image: postgres:15.3
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: public
-    ports:
-      - 5433:5432
-    volumes:
-      - data:/var/lib/postgresql/data
-    networks:
-      - database

@@ -1,0 +1,90 @@
+version: "3.9"
+
+volumes:
+  data:
+  node_modules:
+
+networks:
+  frontend_app:
+  backend_app:
+  database:
+
+services:
+  nginx:
+    depends_on:
+      - frontend_app
+      - backend_app
+    restart: always
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3050:80
+    networks:
+      - frontend_app
+      - backend_app
+    container_name: nginx_olhadinha_dev
+
+  frontend_app:
+    depends_on:
+      - backend_app
+    links:
+      - backend_app:backend_app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    restart: always
+    environment:
+      WDS_SOCKET_HOST: 127.0.0.1
+      CHOKIDAR_USEPOLLING: true
+      WATCHPACK_POLLING: true 
+    volumes:
+      - ./frontend:/app
+      - node_modules:/app/node_modules
+    ports:
+      - 5173:5173
+    container_name: front_olhadinha_dev
+    command: sh -c "npm run dev"
+    networks:
+      - frontend_app
+      - backend_app
+
+  backend_app:
+    depends_on:
+      - database
+    links:
+      - database:database
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    restart: always
+    environment:
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+      DBCONNECTION: postgresql+psycopg2://postgres:postgres@database:5432/postgres
+      PYTHONPATH: /src
+      HOST: '0.0.0.0'
+      PORT: 8080
+    volumes:
+      - ./backend/src:/src
+    ports:
+      - 8080:8080
+    container_name: back_olhadinha_dev
+    command: sh -c "python app.py -B -m flask --app app run --debug"
+    networks:
+      - backend_app
+      - database
+
+  database:
+    image: postgres:15.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: public
+    ports:
+      - 5433:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - database
+    container_name: DB_olhadinha_dev
