@@ -11,9 +11,7 @@ permissions:
 
 jobs:
   tests_backend:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -36,3 +34,18 @@ jobs:
       env:
         DBCONNECTION: ${{ secrets.DB_CONECTION }}
       run: cd ./backend/src && python -m pytest
+  
+  tests_frontend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: cd ./frontend && npm i
+      - run: cd ./frontend && npm run test
