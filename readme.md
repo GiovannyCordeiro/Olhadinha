@@ -2,4 +2,7 @@
 ![banner](./docs/imgs/banner.png)
 # Olhadinha CashBack
 
-- [Ambiente de desenvolvimento](./docs/envoriment/ExecEnvoriment.md)
+- Configuração de ambiente
+  - [Iniciar ambientes de desenvolvimento e produção](./docs/envoriment/ExecEnvironment.md)
+- Database
+  - [Configurações iniciais para do banco paara desenvolvimento](./docs/db/configDatabase.md)
