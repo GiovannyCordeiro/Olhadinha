@@ -28,5 +28,4 @@ class App:
         return self.app
 
 app = App()
-# CORS(app)
 app.run()
