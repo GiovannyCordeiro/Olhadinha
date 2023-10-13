@@ -4,6 +4,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from routes.blueprint import blueprint
 from models.base.StartDBModel import db
+from flask_cors import CORS
 
 load_dotenv()
 
@@ -15,6 +16,7 @@ class App:
         app = Flask(__name__)
         app.config.from_object('config')
         db.init_app(app)
+        CORS(app)
         return app
     
     def run(self):
@@ -26,4 +28,5 @@ class App:
         return self.app
 
 app = App()
+# CORS(app)
 app.run()
