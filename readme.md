@@ -4,5 +4,5 @@
 
 - Configuração de ambiente
   - [Iniciar ambientes de desenvolvimento e produção](./docs/envoriment/ExecEnvironment.md)
-- Database
-  - [Configurações iniciais para do banco paara desenvolvimento](./docs/db/configDatabase.md)
+- Banco de dados
+  - [Configurações iniciais para do banco para desenvolvimento](./docs/db/configDatabase.md)
