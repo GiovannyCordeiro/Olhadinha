@@ -13,7 +13,7 @@ export default function SearchCashbackPage() {
     const [responseApi, setResponseApi] = useState<DataRootAPI>({ data: "", status: "" });
     useEffect(() => {
         async function responseApi() {
-            const requestApi = await axios.get("http://localhost:8080/")
+            const requestApi = await axios.get(`${import.meta.env.VITE_CONNECTION_BACK}`)
             const dataApi: DataRootAPI = await requestApi.data
             setResponseApi(dataApi)
         }
