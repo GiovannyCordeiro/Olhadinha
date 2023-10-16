@@ -30,13 +30,18 @@ export default function RootPage() {
             <main className={styles.RootMain}>
                 <div className={styles.RootContent}>
                     <div className={styles.text}>
-                        <span className="">Dê uma <img src={olhadinhaName} alt="Olhadinha" /> no melhor cashback</span>
+                        <span>
+                            Dê uma
+                            <img src={olhadinhaName} alt="Olhadinha" />
+                            no melhor cashback
+                        </span>
                         <span>disponível sua loja favorita de compras.</span>
                     </div>
                     <div className={styles.searchBar}>
                         <div className={styles.wrapperInput}>
                             <img src={lupaIcon} alt="Lupa Icon" />
-                            <input type="text"
+                            <input
+                                type="text"
                                 id="inputName"
                                 placeholder="Procurar loja..."
                                 onChange={handlerInput}
