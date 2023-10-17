@@ -1,18 +1,17 @@
 from services.DataSearchIntermediaryService import DataSearchIntermediaryService
-from app import app
-
+from tests.services.configs.AppContextTests import app_context
 class TestClass:
+    @app_context
     def test_response_type_getAllPlatforms(self):
-        with app.get_app().app_context():
-            response = DataSearchIntermediaryService.getAllPlatforms()
-            assert type(response) == list
+        response = DataSearchIntermediaryService.getAllPlatforms()
+        assert type(response) == list
 
+    @app_context
     def test_correct_response_getAllPlatforms(self):
-        with app.get_app().app_context():
-            response = DataSearchIntermediaryService.allPlatforms
-            assert response == ['cuponomia', 'intershop', 'zoom', 'meudimdim']
+        response = DataSearchIntermediaryService.allPlatforms
+        assert response == ['cuponomia', 'intershop', 'zoom', 'meudimdim']
 
+    @app_context
     def test_response_type_consultCashbackData(self):
-        with app.get_app().app_context():
-            response = DataSearchIntermediaryService.consultCashbackData('extra')
-            assert type(response) == dict
+        response = DataSearchIntermediaryService.consultCashbackData('extra')
+        assert type(response) == dict

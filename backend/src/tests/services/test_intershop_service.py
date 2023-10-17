@@ -1,12 +1,11 @@
-from app import app
 from services.InterShopService import InterShopService
-
+from tests.services.configs.AppContextTests import app_context
 class TestClass:
+    @app_context
     def test_correctly_data_type(self):
-        with app.get_app().app_context():
-            response = InterShopService.extract("amazon")
-            assert type(response) == str
+        response = InterShopService.extract("amazon")
+        assert type(response) == str
 
+    @app_context
     def test_store_not_existent(self):
-        with app.get_app().app_context():
-            assert InterShopService.extract('loja-da-carabina') == "SNF"
+        assert InterShopService.extract('loja-da-carabina') == "SNF"
