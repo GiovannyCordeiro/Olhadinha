@@ -7,7 +7,7 @@ import re
 class MeuDimDimService:
     @staticmethod
     def extract(store:str):
-        url = f"https://www.meudimdim.com.br/loja/{store}"
+        url = f"https://www.meudimdim.com.br/loja/{store.lower()}"
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0"
         }
@@ -18,5 +18,5 @@ class MeuDimDimService:
         dataCashback = re.split("%", extractCashBack)[0]
         if dataCashback == "":
             dataCashback = "SNF"
-        SavingDataService.save(store, indexPlatformsDB['meudimdim'], dataCashback)
+        SavingDataService.save(store.lower(), indexPlatformsDB['meudimdim'], dataCashback)
         return dataCashback

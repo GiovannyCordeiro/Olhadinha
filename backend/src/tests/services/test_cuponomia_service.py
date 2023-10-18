@@ -1,11 +1,16 @@
 from services.CuponomiaService import CuponomiaService
-from app import app
-
+from tests.services.configs.AppContextTests import app_context
+from tests.services.configs.ValidadeValues import validate_values
 class TestClass:
+    @app_context
     def test_type(self):
-        with app.get_app().app_context():
-            assert type(CuponomiaService.extract('Amazon')) == str
+        assert type(CuponomiaService.extract('Amazon')) == str
     
+    @app_context
     def test_store_not_existent(self):
-        with app.get_app().app_context():
-            assert CuponomiaService.extract('loja-da-carabina') == "SNF"
+        assert CuponomiaService.extract('loja-da-carabina') == "SNF"
+
+    @app_context
+    def test_service_response_correcly(self):
+        data = CuponomiaService.extract("Amazon")
+        assert validate_values(data)
