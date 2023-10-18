@@ -8,7 +8,7 @@ from helpers.Plataforms import indexPlatformsDB
 class InterShopService:
     @staticmethod
     def extract(store:str):
-        url = f"https://intershop.bancointer.com.br/lojas/{store}"
+        url = f"https://intershop.bancointer.com.br/lojas/{store.lower()}"
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0"
         }
@@ -19,5 +19,5 @@ class InterShopService:
         dataCashback = re.split("%", extractCashBack)[0]
         if dataCashback == " ":
             dataCashback = "SNF"
-        SavingDataService.save(store, indexPlatformsDB['intershop'], dataCashback)
+        SavingDataService.save(store.lower(), indexPlatformsDB['intershop'], dataCashback)
         return dataCashback
