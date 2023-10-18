@@ -16,5 +16,5 @@ class ZoomService:
         cashbackPercentage = re.split("%", specificElement[7:9])[0]
         if cashbackPercentage == "":
             cashbackPercentage = "SNF"
-        SavingDataService.save(store, indexPlatformsDB['zoom'], cashbackPercentage)
+        SavingDataService.save(store.lower(), indexPlatformsDB['zoom'], cashbackPercentage)
         return cashbackPercentage
