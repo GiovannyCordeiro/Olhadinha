@@ -1,12 +1,10 @@
 .header {
     width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: 1000;
+    position: relative;
 }
 
 .wrapper_header {
-    height: 6rem;
+    height: 10vh;
     background: var(--main-gray-color);
     display: flex;
     align-items: center;
