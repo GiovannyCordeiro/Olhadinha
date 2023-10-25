@@ -115,6 +115,15 @@
 }
 
 /* 900 celular tem que funcionar ate 420*/
-/* @media screen and (max-width: 900px) {
+@media screen and (max-width: 900px) {
+    .wrapper_header{
+        padding: 0 2rem;
+    }
 
-} */
+    .wrapper_header nav{
+        width: 80vw;
+        height: 100%;
+        padding: 3rem;
+        background-color: rgb(246, 246, 246);
+    }
+}

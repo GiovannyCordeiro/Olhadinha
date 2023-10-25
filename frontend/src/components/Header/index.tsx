@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 
 import styles from "./header.module.css";
 
