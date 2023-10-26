@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: Dockerfile.nginx.prod
     ports:
-      - 8080:80
+      - 3000:80
     networks:
       - backend_app
     container_name: nginx_olhadinha_prod
@@ -36,15 +36,16 @@ services:
       PYTHONDONTWRITEBYTECODE: 1
       DBCONNECTION: postgresql+psycopg2://postgres:postgres@database:5432/postgres
       PYTHONPATH: /src
-      HOST: '0.0.0.0'
-      PORT: 8080
     volumes:
       - ./backend/src:/src
     container_name: back_olhadinha_prod
-    command: sh -c "gunicorn --bind 0.0.0.0:5000 app:App"
+    command: sh -c "gunicorn --bind 0.0.0.0:8080 app:app"
+      # command: sh -c "gunicorn --config gunicornConfig.py app:App"
     networks:
       - backend_app
       - database
+    ports:
+      - 8080:8080
 
   database:
     image: postgres:15.3
