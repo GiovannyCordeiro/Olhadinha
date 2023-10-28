@@ -32,6 +32,7 @@ services:
       dockerfile: Dockerfile.dev
     restart: always
     environment:
+      ENVIRONMENT_VARIABLE: PROD
       PYTHONUNBUFFERED: 1
       PYTHONDONTWRITEBYTECODE: 1
       DBCONNECTION: postgresql+psycopg2://postgres:postgres@database:5432/postgres
