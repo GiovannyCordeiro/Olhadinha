@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ResultSearchCashback from "../../components/ResultSearchCashBack";
 
 interface DataRootAPI {
     data: string;
@@ -23,9 +24,7 @@ export default function SearchCashbackPage() {
     return (
         <>
             <Header />
-            <h2>Company cashback page {params.companyCashback}</h2>
-            <p>{responseApi.data}</p>
-            <p>{responseApi.origin}</p>
+            <ResultSearchCashback />
         </>
     );
 }
