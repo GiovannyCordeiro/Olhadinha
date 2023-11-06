@@ -1,0 +1,132 @@
+.main {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapperResults {
+    width: 90%;
+    height: 80%;
+    background: #FBFBFB;
+    border-radius: .5rem;
+    position: relative;
+}
+
+.headerResult {
+    width: 85%;
+    height: 10%;
+    background: #F6F6F6;
+    border-bottom: 4px solid #D8D8D8;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .8rem;
+    left: 50%;
+    top: -4%;
+    translate: -50%;
+    font-size: 1.2rem;
+}
+
+.headerResult p b{
+    color: var(--blue-dark)
+}
+
+.wrapperElements {
+    margin-top: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.intermediaryResultElement {
+    width: 95%;
+    height: 5.5rem;
+    border: .2rem solid #C0C0C0;
+    border-radius: .4rem;
+    background: #F6F6F6;
+}
+
+.searchNotFoundElement{
+    width: 95%;
+    height: 5.5rem;
+    border: .2rem solid #C0C0C0;
+    border-radius: .4rem;
+    background: #F6F6F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 30%;
+    gap: 2rem;
+}
+
+.topResultElement {
+    width: 95%;
+    height: 5.5rem;
+    border: .2rem solid #4DE94B;
+    border-radius: .4rem;
+    background: #B5FFB4;
+    position:relative;
+    display: flex;
+    justify-content: end;
+}
+
+.lastResultElement {
+    width: 95%;
+    height: 5.5rem;
+    border: .2rem solid #FF7979;
+    border-radius: .4rem;
+    background: #FFD6D6;
+    position:relative;
+}
+
+.detailResult {
+    width: 35%;
+    height: 2rem;
+    position:absolute;
+    top: -15%;
+    right: 1rem;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+}
+
+.detailResult img{
+    width: .7rem;
+}
+
+.arrowLow{
+    transform: rotate(180deg);
+}
+
+.detailResult span{
+    font-size: .8rem;
+    color: #fff;
+}
+
+.contentInformation {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media screen and (min-width: 900px) {
+    .wrapperResults {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .wrapperResults {
+        width: 40%;
+    }
+}

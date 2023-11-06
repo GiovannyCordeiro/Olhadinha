@@ -5,7 +5,7 @@ import WhatIsCashbackPage from "./pages/WhatIsCashbackPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import SearchCashbackPage from "./pages/SearchCashbackPage";
 
-function App() {
+export default function App() {
     const routes = createBrowserRouter([
         { path: "/", element: <RootPage /> },
         { path: "/sobre-nos", element: <AboutUsPage /> },
@@ -15,5 +15,3 @@ function App() {
     ]);
     return <RouterProvider router={routes} />;
 }
-
-export default App;
