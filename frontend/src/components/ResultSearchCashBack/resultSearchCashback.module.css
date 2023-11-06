@@ -61,6 +61,7 @@
     align-items: center;
     justify-content: center;
     opacity: 30%;
+    gap: 2rem;
 }
 
 .topResultElement {
