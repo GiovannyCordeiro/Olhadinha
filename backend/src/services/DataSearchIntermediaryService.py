@@ -35,4 +35,4 @@ class DataSearchIntermediaryService:
                 'namePlatform': platform,
                 'percentage': result.porcentagem
             })
-        return jsonify(responseUser)
+        return responseUser
