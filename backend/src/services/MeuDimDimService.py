@@ -14,7 +14,7 @@ class MeuDimDimService:
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
         textElement = soup.find_all("h4")[0].text
-        extractCashBack = textElement[16:18]
+        extractCashBack = textElement[16:19]
         dataCashback = re.split("%", extractCashBack)[0]
         if dataCashback == "":
             dataCashback = "SNF"
