@@ -15,6 +15,8 @@ class ZoomService:
         specificElement = soup.find('span',class_="Text_Text__h_AF6 Text_DesktopLabelS__qDtn4 Chip_Text__WMVdR")
         if specificElement is None:
             return 'SNF'
-        cashbackPercentage = re.split("%", specificElement.text[0:4])[0]
+        print("elemento que vai retornar como resposta", specificElement.text)
+        cashbackPercentage = re.split("%", specificElement.text[3:6])[0]
+        print("elemento que vai retornar como resposta", cashbackPercentage)
         SavingDataService.save(store.lower(), indexPlatformsDB['zoom'], cashbackPercentage)
         return cashbackPercentage
