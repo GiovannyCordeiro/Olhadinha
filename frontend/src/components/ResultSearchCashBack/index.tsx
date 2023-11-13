@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { UnitPlatform, ParamsProp } from "./typesSearchCashback"
+import { UnitPlatform, ParamsProp, listItemsCashback } from "./typesSearchCashback"
 
 import style from "./resultSearchCashback.module.css"
 import arrowIcon from "../../assets/arrow.png"
 
 export default function ResultSearchCashback(props: ParamsProp) {
     const { companyCashback } = props.params;
-    const [bestPlatform, setBestPlatform] = useState<UnitPlatform[]>([]);
-    const [worstPlatform, setWorstPlatform] = useState<UnitPlatform[]>([]);
-    const [evenPlatform, setEvenPlatform] = useState<UnitPlatform[]>([]);
-    const [platformNoCashbackPercentage, setPlatformNoCashbackPercentage] = useState<UnitPlatform[]>([])
+    const defaultListItemsCashback: listItemsCashback = {
+        "bestPlatform": [],
+        "evenPlatform": [],
+        "worstPlatform": [],
+        "platformNoCashbackPercentage": [],
+    };
+    const [allListsCashback, setAllListsCashback] = useState<listItemsCashback>(defaultListItemsCashback);
+    const [loader, setLoader] = useState<Boolean>(false);
     useEffect(() => {
+        setLoader(true);
         async function requestForAPI() {
             const responseAPI = await axios.get(`http://localhost:8080/platform/${companyCashback}`)
             const listPlatforms: [UnitPlatform] = responseAPI.data
-
             let separetedList = listPlatforms.reduce(
                 (acc: {
                     platformsWithCashback: UnitPlatform[],
@@ -28,27 +32,27 @@ export default function ResultSearchCashback(props: ParamsProp) {
                     }
                     return acc;
                 }, { platformsWithCashback: [], platformsNoCashbackPercentage: [] });
-
-            setPlatformNoCashbackPercentage(separetedList.platformsNoCashbackPercentage)
-
             const bestPlatform = [separetedList.platformsWithCashback.reduce((max, obj) =>
                 (parseInt(obj.percentage) > parseInt(max.percentage) ? obj : max), separetedList.platformsWithCashback[0]
             )];
-            setBestPlatform(bestPlatform)
-
             let worstPlatform = [separetedList.platformsWithCashback.reduce((max, obj) =>
                 (parseInt(obj.percentage) < parseInt(max.percentage) ? obj : max), separetedList.platformsWithCashback[0])];
-            setWorstPlatform(worstPlatform)
-
             let evenPlatforms = separetedList.platformsWithCashback.filter((current) => {
-                if (current.namePlatform !== bestPlatform[0].namePlatform && current.namePlatform !== worstPlatform[0].namePlatform) {
+                if (current.namePlatform !== bestPlatform[0].namePlatform
+                    && current.namePlatform !== worstPlatform[0].namePlatform) {
                     return current
                 }
-            })
-            setEvenPlatform(evenPlatforms)
+            });
+            setAllListsCashback({
+                platformNoCashbackPercentage: separetedList.platformsNoCashbackPercentage,
+                bestPlatform: bestPlatform,
+                evenPlatform: evenPlatforms,
+                worstPlatform: worstPlatform
+            });
+            setLoader(false);
         }
-        requestForAPI()
-    }, [])
+        requestForAPI();
+    }, []);
 
 
     return (
@@ -61,8 +65,8 @@ export default function ResultSearchCashback(props: ParamsProp) {
                     </p>
                 </div>
                 <div className={style.wrapperElements}>
-                    {
-                        bestPlatform.map((element, index) => (
+                    {!loader ?
+                        allListsCashback.bestPlatform.map((element, index) => (
                             <div className={style.topResultElement} key={index}>
                                 <div className={style.detailResult} style={{ background: '#47D845' }}>
                                     <img src={arrowIcon} alt="" />
@@ -76,9 +80,10 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                 </div>
                             </div>
                         ))
+                        : <p>loading...</p>
                     }
-                    {
-                        evenPlatform.map((element, index) => (
+                    {!loader ?
+                        allListsCashback.evenPlatform.map((element, index) => (
                             <div className={style.intermediaryResultElement} key={index}>
                                 <div className={style.contentInformation}>
                                     <h2>
@@ -87,11 +92,10 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                     <span>Porcentagem: {element.percentage}%</span>
                                 </div>
                             </div>
-                        )
-                        )
+                        )) : null
                     }
-                    {
-                        worstPlatform.map((element, index) => (
+                    {!loader ?
+                        allListsCashback.worstPlatform.map((element, index) => (
                             <div className={style.lastResultElement} key={index}>
                                 <div className={style.detailResult} style={{ background: '#FF7979' }}>
                                     <img src={arrowIcon} alt="" className={style.arrowLow} />
@@ -104,17 +108,16 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                     <span>Porcentagem: {element.percentage}%</span>
                                 </div>
                             </div>
-                        ))
+                        )) : null
                     }
-                    {
-                        platformNoCashbackPercentage.map((element, index) => (
+                    {!loader ?
+                        allListsCashback.platformNoCashbackPercentage.map((element, index) => (
                             <div className={style.searchNotFoundElement} key={index}>
                                 <h2>{element.namePlatform}</h2>
                                 <b>Loja não encontrada nesta plataforma</b>
                             </div>
-                        ))
+                        )) : null
                     }
-
                 </div>
             </div>
         </main>

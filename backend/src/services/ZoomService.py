@@ -12,11 +12,11 @@ class ZoomService:
         url = f"https://www.zoom.com.br/search?q={store.lower()}"
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
-        specificElement = soup.find('span',class_="Text_Text__h_AF6 Text_DesktopLabelS__qDtn4 Chip_Text__WMVdR")
+        specificElement = soup.find('span',class_="Button_Label__5DJmK")
         if specificElement is None:
             return 'SNF'
         print("elemento que vai retornar como resposta", specificElement.text)
-        cashbackPercentage = re.split("%", specificElement.text[3:6])[0]
+        cashbackPercentage = re.split("%", specificElement.text[7:11])[0]
         print("elemento que vai retornar como resposta", cashbackPercentage)
         SavingDataService.save(store.lower(), indexPlatformsDB['zoom'], cashbackPercentage)
         return cashbackPercentage
