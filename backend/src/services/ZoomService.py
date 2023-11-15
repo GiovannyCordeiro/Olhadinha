@@ -1,8 +1,9 @@
 import requests
+import re
+
 from bs4 import BeautifulSoup
 from services.SavingDataService import SavingDataService
 from helpers.Plataforms import indexPlatformsDB
-import re
 
 class ZoomService:
     def extract(store: str) -> str:
