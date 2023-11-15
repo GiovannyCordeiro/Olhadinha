@@ -10,6 +10,5 @@ class IndexController:
 
         return {
         'status': 'OK',
-        'data': "Welcome to OLHADINHA API",
-        'origin': origin
+        'data': "Welcome to OLHADINHA API"
         }
