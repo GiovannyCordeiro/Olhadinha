@@ -1,13 +1,19 @@
 import requests
+import re
+
 from bs4 import BeautifulSoup
 from services.SavingDataService import SavingDataService
 from helpers.Plataforms import indexPlatformsDB
-import re
 
 class MeuDimDimService:
     @staticmethod
     def extract(store:str):
-        url = f"https://www.meudimdim.com.br/loja/{store.lower()}"
+        selectStore = store
+        storeNameWithSpace = re.match("\w+\s\w+", store)
+        if storeNameWithSpace != None:
+            splitingStore = store.split(" ")
+            selectStore = "-".join(splitingStore)
+        url = f"https://www.meudimdim.com.br/loja/{selectStore.lower()}"
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0"
         }
