@@ -4,14 +4,11 @@ import re
 from bs4 import BeautifulSoup
 from services.SavingDataService import SavingDataService
 from helpers.Plataforms import indexPlatformsDB
+from helpers.checkWitheSpaceStoreName import checkWitheSpaceStoreName
 
 class CuponomiaService:
-    def extract(store:str):
-        selectStore = store
-        storeNameWithSpace = re.match("\w+\s\w+", store)
-        if storeNameWithSpace != None:
-            splitingStore = store.split(" ")
-            selectStore = "-".join(splitingStore)
+    def extract(store:str) -> str:
+        selectStore = checkWitheSpaceStoreName(store)
         url = f"https://www.cuponomia.com.br/desconto/{selectStore.lower()}"
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0"
