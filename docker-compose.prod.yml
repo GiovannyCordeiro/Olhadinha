@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: Dockerfile.nginx.prod
     ports:
-      - 3000:80
+      - 80:80
     networks:
       - backend_app
     container_name: nginx_olhadinha_prod
@@ -41,7 +41,6 @@ services:
       - ./backend/src:/src
     container_name: back_olhadinha_prod
     command: sh -c "gunicorn --bind 0.0.0.0:8080 app:app"
-      # command: sh -c "gunicorn --config gunicornConfig.py app:App"
     networks:
       - backend_app
       - database
