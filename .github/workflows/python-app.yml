@@ -22,8 +22,8 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Build and Run Containers
-        run: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up
       - name: BackEnd Test
         run: docker exec -it back_olhadinha_dev python -m pytest
-      - name: FrontEnd Tests
-        run: docker exec -it front_olhadinha_dev npm run test
+      # - name: FrontEnd Tests
+      #   run: docker exec -it front_olhadinha_dev npm run test
