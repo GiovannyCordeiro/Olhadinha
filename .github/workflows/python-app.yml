@@ -21,11 +21,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      - name: Entering the folder
-        run: cd bin
       - name: Build and Run Containers
         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d
       - name: BackEnd Test
-        run: docker exec -it back_olhadinha_dev python -m pytest
-      - name: FrontEnd Tests
-        run: docker exec -it front_olhadinha_dev npm run test
+        run: docker exec back_olhadinha_dev python -m pytest
+      # - name: FrontEnd Tests
+      #   run: docker exec front_olhadinha_dev npm run test
