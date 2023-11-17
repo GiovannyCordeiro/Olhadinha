@@ -36,8 +36,8 @@ services:
     restart: always
     environment:
       WDS_SOCKET_HOST: 127.0.0.1
-      CHOKIDAR_USEPOLLING: true
-      WATCHPACK_POLLING: true 
+      CHOKIDAR_USEPOLLING: 'true'
+      WATCHPACK_POLLING: 'true' 
       VITE_CONNECTION_BACK: http://localhost:8080/
     volumes:
       - ./frontend:/app
