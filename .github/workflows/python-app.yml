@@ -24,7 +24,7 @@ jobs:
       - name: Entering the folder
         run: cd bin
       - name: Build and Run Containers
-        run: ./applicationEnvironment.sh dev up
+        run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
       - name: BackEnd Test
         run: docker exec -it back_olhadinha_dev python -m pytest
       - name: FrontEnd Tests
