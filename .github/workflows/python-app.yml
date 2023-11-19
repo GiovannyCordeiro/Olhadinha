@@ -25,8 +25,8 @@ jobs:
         run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d
       # - name: Giving permission to file
       #   run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app bash -c "chmod +x bin/setupDatabase.sh"
-      # - name: Giving permission to file setupDatabase
-      #   run:  docker exec back_olhadinha_dev bash -c "sudo chmod +x bin/setupDatabase.sh"
+      - name: Giving permission to file setupDatabase
+        run:  docker exec back_olhadinha_dev bash -c "sudo chmod +x bin/setupDatabase.sh"
       - name: Setup Database
         # run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app bash -c 'bin/setupDatabase.sh'
         run: docker exec back_olhadinha_dev bash -c 'bin/setupDatabase.sh'
