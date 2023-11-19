@@ -24,7 +24,7 @@ jobs:
       - name: Build and Run Containers
         run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d
       - name: Setup Database
-        run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app sh -c 'bin/setupDatabase.sh'
+        run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app sh -c './bin/setupDatabase.sh'
       - name: BackEnd Test
         run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app sh -c 'python -m pytest'
       - name: FrontEnd Tests
