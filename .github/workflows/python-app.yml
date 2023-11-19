@@ -24,7 +24,13 @@ jobs:
       - name: Build and Run Containers
         run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d
       - name: Setup Database
-        run: docker exec back_olhadinha_dev bin/setupDataBase.sh
+        run: docker exec back_olhadinha_dev cd bin/setupDataBase.sh
+
+      # aqui eu preciso setar toda uma configuração para o banco de dados quando ele subir basicamente:
+      # configurar tabelas e seeaders, fazer isso no backend por que vai tambem certir como automação 
+      # para subir mais rapido o banco
+
+      # Automatizar essa tarefa com shell script.
 
       - name: BackEnd Test
         run: docker exec back_olhadinha_dev python -m pytest
