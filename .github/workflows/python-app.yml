@@ -26,8 +26,11 @@ jobs:
       # - name: Giving permission to file
       #   run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app bash -c "chmod +x bin/setupDatabase.sh"
       - name: Setup Database
-        run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app bash -c 'bin/setupDatabase.sh'
+        # run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app bash -c 'bin/setupDatabase.sh'
+        run: docker exec back_olhadinha_dev bash -c 'bin/setupDatabase.sh'
       - name: BackEnd Test
-        run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app bash -c 'python -m pytest'
+        run: docker exec back_olhadinha_dev python -m pytest
+        # run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec backend_app bash -c 'python -m pytest'
       - name: FrontEnd Tests
-        run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec frontend_app bash -c 'bin/setupDatabase.sh'
+        run: docker exec front_olhadinha_dev npm run test
+        # run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec frontend_app bash -c 'bin/setupDatabase.sh'
