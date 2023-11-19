@@ -1,4 +1,4 @@
-# criar tabelas
+#!/bin/bash
 
 path_models="/src/models/"
 
