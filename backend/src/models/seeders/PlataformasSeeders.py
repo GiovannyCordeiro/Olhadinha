@@ -11,6 +11,6 @@ platformas = [
     Plataformas(nome="meudimdim", id = indexPlatformsDB['meudimdim'])
 ]
 
-with app.app.app_context():
+with app.app_context():
     db.session.add_all(platformas)
     db.session.commit()

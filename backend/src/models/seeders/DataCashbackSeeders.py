@@ -9,6 +9,6 @@ platformas = [
     DadosCashback(porcentagem='1', plataforma=indexPlatformsDB['zoom'], loja="Amazom")
 ]
 
-with app.app.app_context():
+with app.app_context():
     db.session.add_all(platformas)
     db.session.commit()
