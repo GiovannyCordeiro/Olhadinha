@@ -4,13 +4,12 @@ import re
 from bs4 import BeautifulSoup
 from services.SavingDataService import SavingDataService
 from helpers.Plataforms import indexPlatformsDB
-from helpers.checkWitheSpaceStoreName import checkWitheSpaceStoreName
+from helpers.URLsScrapping import ULRsScrapping
 
 class MeuDimDimService:
     @staticmethod
     def extract(store:str) -> str:
-        selectStore = checkWitheSpaceStoreName(store)
-        url = f"https://www.meudimdim.com.br/loja/{selectStore.lower()}"
+        url = ULRsScrapping.logic['meudimdim'](store)
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0"
         }
