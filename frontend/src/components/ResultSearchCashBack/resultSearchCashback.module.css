@@ -85,6 +85,21 @@
     position:relative;
 }
 
+.intermediaryResultElement a,
+.topResultElement a,
+.lastResultElement a{
+    color: var(--main-black-text);
+    border-radius: .5rem;
+}
+
+.intermediaryResultElement a:hover,
+.topResultElement a:hover,
+.lastResultElement a:hover{
+    transition: .1s;
+    color: black;
+    font-weight: bold;
+}
+
 .detailResult {
     width: 35%;
     height: 2rem;
