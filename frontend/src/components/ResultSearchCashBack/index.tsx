@@ -77,8 +77,10 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                         {element.namePlatform}
                                     </h2>
                                     <span>Porcentagem: {element.percentage}%</span>
+                                    {/* <a href="https://www.w3schools.com" target="_blank">Visit W3Schools.com!</a> */}
                                 </div>
                             </div>
+
                         ))
                         : <p>loading...</p>
                     }
