@@ -25,7 +25,7 @@ export default function ResultSearchCashback(props: ParamsProp) {
                     platformsWithCashback: UnitPlatform[],
                     platformsNoCashbackPercentage: UnitPlatform[]
                 }, cur) => {
-                    if (cur.percentage === "SNF") {
+                    if (cur.morePlatform.percentage === "SNF") {
                         acc.platformsNoCashbackPercentage.push(cur);
                     } else {
                         acc.platformsWithCashback.push(cur);
@@ -33,10 +33,10 @@ export default function ResultSearchCashback(props: ParamsProp) {
                     return acc;
                 }, { platformsWithCashback: [], platformsNoCashbackPercentage: [] });
             const bestPlatform = [separetedList.platformsWithCashback.reduce((max, obj) =>
-                (parseInt(obj.percentage) > parseInt(max.percentage) ? obj : max), separetedList.platformsWithCashback[0]
+                (parseInt(obj.morePlatform.percentage) > parseInt(max.morePlatform.percentage) ? obj : max), separetedList.platformsWithCashback[0]
             )];
             let worstPlatform = [separetedList.platformsWithCashback.reduce((max, obj) =>
-                (parseInt(obj.percentage) < parseInt(max.percentage) ? obj : max), separetedList.platformsWithCashback[0])];
+                (parseInt(obj.morePlatform.percentage) < parseInt(max.morePlatform.percentage) ? obj : max), separetedList.platformsWithCashback[0])];
             let evenPlatforms = separetedList.platformsWithCashback.filter((current) => {
                 if (current.namePlatform !== bestPlatform[0].namePlatform
                     && current.namePlatform !== worstPlatform[0].namePlatform) {
@@ -53,6 +53,7 @@ export default function ResultSearchCashback(props: ParamsProp) {
         }
         requestForAPI();
     }, []);
+    console.log("allLists", allListsCashback)
 
 
     return (
@@ -76,9 +77,11 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                     <h2>
                                         {element.namePlatform}
                                     </h2>
-                                    <span>Porcentagem: {element.percentage}%</span>
+                                    <span>Porcentagem: {element.morePlatform.percentage}%</span>
+                                    <a href={`${element.morePlatform.link}`} target="_blank">Vá à pagina de compra</a>
                                 </div>
                             </div>
+
                         ))
                         : <p>loading...</p>
                     }
@@ -89,7 +92,8 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                     <h2>
                                         {element.namePlatform}
                                     </h2>
-                                    <span>Porcentagem: {element.percentage}%</span>
+                                    <span>Porcentagem: {element.morePlatform.percentage}%</span>
+                                    <a href={`${element.morePlatform.link}`} target="_blank">Vá à pagina de compra</a>
                                 </div>
                             </div>
                         )) : null
@@ -105,7 +109,8 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                     <h2>
                                         {element.namePlatform}
                                     </h2>
-                                    <span>Porcentagem: {element.percentage}%</span>
+                                    <span>Porcentagem: {element.morePlatform.percentage}%</span>
+                                    <a href={`${element.morePlatform.link}`} target="_blank">Vá à pagina de compra</a>
                                 </div>
                             </div>
                         )) : null

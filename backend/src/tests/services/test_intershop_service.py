@@ -13,5 +13,5 @@ class TestClass:
     
     @app_context
     def test_service_response_correcly(self):
-        data = InterShopService.extract("Amazon")
+        data = InterShopService.extract("amazon")
         assert validate_values(data)

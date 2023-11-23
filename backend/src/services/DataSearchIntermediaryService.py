@@ -3,8 +3,7 @@ from models.entities.platformsModel import Plataformas
 
 from services.VerifyExistsDataService import VerifyExistsDataService
 from services.FiringPlatformService import FireBotPlatform
-
-from flask import jsonify
+from helpers.URLsScrapping import ULRsScrapping
 
 class DataSearchIntermediaryService:
 
@@ -19,20 +18,25 @@ class DataSearchIntermediaryService:
             allPlatforms.append(value.nome)
         return allPlatforms
 
-    def consultCashbackData( store:str) -> dict:
+    def consultCashbackData(store:str) -> dict:
         responseUser = []
         allPlatforms = DataSearchIntermediaryService.getAllPlatforms()
-        print(allPlatforms)
         for platform in allPlatforms:
             result = VerifyExistsDataService.search(store, platform)
             if(result == False):
                 responseUser.append({
                 'namePlatform': platform,
-                'percentage': FireBotPlatform.logic[f"{platform}"](store)
+                'morePlatform': {
+                    'percentage': FireBotPlatform.logic[f"{platform}"](store),
+                    'link': ULRsScrapping.logic[f"{platform}"](store.lower())
+                }
                 })
                 continue
             responseUser.append({
                 'namePlatform': platform,
-                'percentage': result.porcentagem
+                'morePlatform': {
+                    'percentage': result.porcentagem,
+                    'link': ULRsScrapping.logic[f"{platform}"](store.lower())
+                }
             })
         return responseUser

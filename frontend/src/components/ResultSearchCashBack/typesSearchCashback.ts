@@ -6,7 +6,10 @@ export interface ParamsProp {
 
 export interface UnitPlatform {
     namePlatform: string;
-    percentage: string;
+    morePlatform: {
+        link: string,
+        percentage: string
+    };
 }
 
 export interface listItemsCashback {
