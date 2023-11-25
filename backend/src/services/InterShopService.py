@@ -18,7 +18,6 @@ class InterShopService:
         specificElement = soup.find('h1').text
         extractCashBack = specificElement[6:7]
         dataCashback = re.split("%", extractCashBack)[0]
-        print("datacashback", dataCashback)
         if dataCashback == " " or dataCashback == "":
             dataCashback = "SNF"
         SavingDataService.save(store.lower(), indexPlatformsDB['intershop'], dataCashback)
