@@ -18,6 +18,6 @@ class CuponomiaService:
         if textElement is None:
             cashbackPercentage = "SNF"
         else:
-            cashbackPercentage = textElement.text[8:9]
+            cashbackPercentage = textElement.text[12:14]
         SavingDataService.save(store.lower(), indexPlatformsDB['cuponomia'], cashbackPercentage)
         return cashbackPercentage
