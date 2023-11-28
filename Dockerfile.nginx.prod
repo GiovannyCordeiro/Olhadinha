@@ -7,8 +7,6 @@ RUN npm install
 ENV VITE_CONNECTION_BACK http://localhost:8080/
 COPY frontend/ .
 
-RUN yarn install
-RUN yarn upgrade
 RUN npm run build
 
 FROM nginx:1.25.2-alpine
