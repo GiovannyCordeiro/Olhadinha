@@ -5,7 +5,7 @@ class IndexController:
     def index():
         origin = request.headers.get("Origin") 
         if os.environ['ENVIRONMENT_VARIABLE'] == "PROD":
-            if origin != "http://localhost:3000":
+            if origin != "http://localhost:3000" or origin != "http://localhost:80":
                 abort(403)
 
         return {
