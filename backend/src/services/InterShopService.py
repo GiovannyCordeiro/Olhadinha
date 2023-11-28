@@ -11,7 +11,7 @@ class InterShopService:
     def extract(store:str) -> str:
         url = ULRsScrapping.logic["intershop"](store)
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0"
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36"
         }
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
