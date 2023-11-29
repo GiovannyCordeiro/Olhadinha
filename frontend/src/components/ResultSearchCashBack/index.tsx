@@ -18,7 +18,7 @@ export default function ResultSearchCashback(props: ParamsProp) {
     useEffect(() => {
         setLoader(true);
         async function requestForAPI() {
-            const responseAPI = await axios.get(`http://localhost:8080/platform/${companyCashback}`)
+            const responseAPI = await axios.get(`${import.meta.env.VITE_CONNECTION_BACK}/platform/${companyCashback}`)
             const listPlatforms: [UnitPlatform] = responseAPI.data
             let separetedList = listPlatforms.reduce(
                 (acc: {
@@ -53,7 +53,6 @@ export default function ResultSearchCashback(props: ParamsProp) {
         }
         requestForAPI();
     }, []);
-    console.log("allLists", allListsCashback)
 
 
     return (
