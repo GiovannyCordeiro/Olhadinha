@@ -43,7 +43,7 @@ jobs:
           aws-region: sa-east-1
       - name: Run commands on EC2 instance
         env:
-          PRIVATE_KEY: ${{secrets.SSH_PEM}}
+          PRIVATE_KEY: ${{ secrets.SSH_PEM }}
         run: |
           echo "$PRIVATE_KEY" > GIOVANNY.pem
           ssh -i "GIOVANNY.pem" ubuntu@ec2-15-229-11-35.sa-east-1.compute.amazonaws.com ls
