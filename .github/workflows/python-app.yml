@@ -49,4 +49,4 @@ jobs:
           chmod 600 GIOVANNY.pem
           mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
           ssh-keyscan -H ec2-15-229-11-35.sa-east-1.compute.amazonaws.com >> ~/.ssh/known_hosts
-          ssh -i "GIOVANNY.pem" ubuntu@ec2-15-229-11-35.sa-east-1.compute.amazonaws.com ls
+          ssh -i GIOVANNY.pem ubuntu@ec2-15-229-11-35.sa-east-1.compute.amazonaws.com ls
