@@ -43,8 +43,8 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           SCRIPT_AFTER: |
+            cd Olhadinha
             docker rm -f $(docker ps -aq)
-            docker rmi olhadinha-nginx
-            docker rmi olhadinha-backend_app
+            docker rmi $(docker images -a -q)
             git pull
             cd bin && ./applicationEnvironment.sh prod up

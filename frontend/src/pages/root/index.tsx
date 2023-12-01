@@ -35,7 +35,7 @@ export default function RootPage() {
                             <img src={olhadinhaName} alt="Olhadinha" />
                             no melhor cashback
                         </span>
-                        <span>disponível para sua loja favorita de compras. TESTING</span>
+                        <span>disponível para sua loja favorita de compras. GIOVANNY TEST</span>
                     </div>
                     <div className={styles.searchBar}>
                         <div className={styles.wrapperInput}>
