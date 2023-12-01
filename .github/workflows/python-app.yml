@@ -11,7 +11,6 @@ permissions:
 
 jobs:
   CI:
-    name: Run all tests for test quality
     runs-on: ubuntu-latest
     services:
       docker:
@@ -32,7 +31,6 @@ jobs:
         run: docker exec front_olhadinha_dev npm run test
   CD:
     needs: CI
-    name: Deploy to EC2 instance
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the files
