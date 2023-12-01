@@ -47,7 +47,7 @@ export default function Header() {
                             <li>
                                 <img src={moneyBill} alt="Cédula Icon" />
                                 <NavLink to="/o-que-e-cashback">
-                                    O que é cashback? test
+                                    O que é cashback?
                                 </NavLink>
                             </li>
                             <li>
