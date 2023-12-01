@@ -50,5 +50,4 @@ jobs:
           chmod 644 ~/.ssh/known_hosts
       - name: Run commands on EC2 instance
         run: |
-          echo ${{ secrets.SSH_PEM }} > GIOVANNY.pem
-          ssh -i "GIOVANNY.pem" ubuntu@ec2-15-229-11-35.sa-east-1.compute.amazonaws.com ls
+          ssh -o StrictHostKeyChecking=no ubuntu@ec2-15-229-11-35.sa-east-1.compute.amazonaws.com ls
