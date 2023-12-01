@@ -4,7 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY frontend/package.json .
 RUN npm install
-ENV VITE_CONNECTION_BACK http://15.229.11.35:8080/api
+ENV VITE_CONNECTION_BACK http://15.229.11.35:8080
 COPY frontend/ .
 
 RUN npm run build
