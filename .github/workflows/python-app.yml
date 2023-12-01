@@ -46,4 +46,5 @@ jobs:
             docker rm -f $(docker ps -aq)
             docker rmi olhadinha-nginx
             docker rmi olhadinha-backend_app
+            git pull
             cd bin && ./applicationEnvironment.sh prod up
