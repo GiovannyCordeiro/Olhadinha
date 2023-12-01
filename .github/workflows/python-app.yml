@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on:
   push:
@@ -29,3 +29,21 @@ jobs:
         run: docker exec back_olhadinha_dev python -m pytest
       - name: FrontEnd Tests
         run: docker exec front_olhadinha_dev npm run test
+  CD:
+    needs: CI
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          SCRIPT_AFTER: |
+            docker rm -f $(docker ps -aq)
+            docker rmi olhadinha-nginx
+            docker rmi olhadinha-backend_app
+            cd bin && ./applicationEnvironment.sh prod up
