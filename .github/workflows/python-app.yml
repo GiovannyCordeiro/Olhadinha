@@ -41,10 +41,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: sa-east-1
-      - name: Run commands on EC2 instance
-        env:
-          PRIVATE_KEY: ${{ secrets.SSH_PEM }}
+      - name: Set up SSH key
         run: |
-          echo $PRIVATE_KEY > GIOVANNY.pem
-          chmod 600 GIOVANNY.pem
-          ssh -i GIOVANNY.pem ubuntu@ec2-15-229-11-35.sa-east-1.compute.amazonaws.com ls
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H your-ec2-instance-ip >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+      - name: Run commands on EC2 instance
+        run: |
+          echo ${{ secrets.SSH_PEM }} > GIOVANNY.pem
+          ssh -i "GIOVANNY.pem" ubuntu@ec2-15-229-11-35.sa-east-1.compute.amazonaws.com ls
