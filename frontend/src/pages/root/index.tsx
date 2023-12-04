@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../../components/Header";
-import olhadinhaName from "../../assets/OlhadinhaName.svg"
+
 import styles from "./index.module.css"
+
+import olhadinhaName from "../../assets/logos/OlhadinhaName.svg"
 import lupaIcon from "../../assets/LupaIcon.png"
 import logoIcon from "../../assets/LogoIcon.svg"
 
