@@ -3,7 +3,13 @@ import axios from "axios";
 import { UnitPlatform, ParamsProp, listItemsCashback } from "./typesSearchCashback"
 
 import style from "./resultSearchCashback.module.css"
+
 import arrowIcon from "../../assets/arrow.png"
+
+import cuponomiaLogo from "../../assets/logos/cuponomiaLogo.png";
+import intershopLogo from "../../assets/logos/intershopLogo.svg";
+import zoomLogo from "../../assets/logos/zoomLogo.png";
+import meudimdimLogo from "../../assets/logos/meudimdimLogo.png";
 
 export default function ResultSearchCashback(props: ParamsProp) {
     const { companyCashback } = props.params;
@@ -54,6 +60,28 @@ export default function ResultSearchCashback(props: ParamsProp) {
         requestForAPI();
     }, []);
 
+    interface interfacePlatform {
+        [key: string]: () => string
+    }
+
+    function selectLogoPlatform(platform: string) {
+        const itensPlatform: interfacePlatform = {
+            cuponomia() {
+                return cuponomiaLogo
+            },
+            intershop() {
+                return intershopLogo
+            },
+            zoom() {
+                return zoomLogo
+            },
+            meudimdim() {
+                return meudimdimLogo
+            }
+
+        }
+        return itensPlatform[`${platform}`]()
+    }
 
     return (
         <main className={style.main}>
@@ -61,7 +89,7 @@ export default function ResultSearchCashback(props: ParamsProp) {
                 <div className={style.headerResult}>
                     <p>
                         Melhores cashback para
-                        <b> {companyCashback}</b>
+                        <b>{companyCashback}</b>
                     </p>
                 </div>
                 <div className={style.wrapperElements}>
@@ -73,6 +101,9 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                     <span>Maior cashback</span>
                                 </div>
                                 <div className={style.contentInformation}>
+                                    <div className={style.logoPlatform}>
+                                        <img src={selectLogoPlatform(element.namePlatform)} alt="" />
+                                    </div>
                                     <h2>
                                         {element.namePlatform}
                                     </h2>
@@ -88,6 +119,9 @@ export default function ResultSearchCashback(props: ParamsProp) {
                         allListsCashback.evenPlatform.map((element, index) => (
                             <div className={style.intermediaryResultElement} key={index}>
                                 <div className={style.contentInformation}>
+                                    <div className={style.logoPlatform}>
+                                        <img src={selectLogoPlatform(element.namePlatform)} alt="" />
+                                    </div>
                                     <h2>
                                         {element.namePlatform}
                                     </h2>
@@ -105,6 +139,9 @@ export default function ResultSearchCashback(props: ParamsProp) {
                                     <span>Menor cashback</span>
                                 </div>
                                 <div className={style.contentInformation}>
+                                    <div className={style.logoPlatform}>
+                                        <img src={selectLogoPlatform(element.namePlatform)} alt="" />
+                                    </div>
                                     <h2>
                                         {element.namePlatform}
                                     </h2>
