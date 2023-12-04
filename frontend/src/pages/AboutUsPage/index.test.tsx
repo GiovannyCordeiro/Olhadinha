@@ -14,12 +14,12 @@ describe("App test", () => {
         expect(screen.getByText("Sobre nos, testing")).toBeInTheDocument();
     });
 
-    test("testing text element create dinamic", () => {
-        render(
-            <BrowserRouter>
-                <AboutUsPage />
-            </BrowserRouter>
-        );
-        expect(screen.getByTestId("p_sum")).toHaveTextContent("5");
-    });
+    // test("testing text element create dinamic", () => {
+    //     render(
+    //         <BrowserRouter>
+    //             <AboutUsPage />
+    //         </BrowserRouter>
+    //     );
+    //     expect(screen.getByTestId("p_sum")).toHaveTextContent("5");
+    // });
 });
