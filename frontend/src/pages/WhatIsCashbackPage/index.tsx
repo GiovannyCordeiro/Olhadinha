@@ -1,10 +1,10 @@
 import Header from "../../components/Header";
 import styles from "./index.module.css"
 
-import LogoCuponomia from "../../assets/CuponomiaLogo.png"
-import LogoMeliuz from "../../assets/MeliuzLogo.png"
-import LogoZoom from "../../assets/ZoomLogo.png"
-import LogoInterShop from "../../assets/InterShopLogo.svg"
+import LogoCuponomia from "../../assets/logos/cuponomiaLogo.png"
+import LogoMeliuz from "../../assets/logos/meliuzLogo.png"
+import LogoZoom from "../../assets/logos/zoomLogo.png"
+import LogoInterShop from "../../assets/logos/intershopLogo.svg"
 
 export default function WhatIsCashbackPage() {
 
