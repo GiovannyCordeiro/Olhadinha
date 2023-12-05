@@ -11,7 +11,7 @@ describe("App test", () => {
                 <AboutUsPage />
             </BrowserRouter>
         );
-        expect(screen.getByText("Sobre nos, testing")).toBeInTheDocument();
+        expect(screen.getByText("Hístoria do Projeto")).toBeInTheDocument();
     });
 
     // test("testing text element create dinamic", () => {
