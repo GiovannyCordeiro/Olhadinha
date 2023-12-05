@@ -89,7 +89,7 @@ export default function ResultSearchCashback(props: ParamsProp) {
                 <div className={style.headerResult}>
                     <p>
                         Melhores cashback para
-                        <b>{companyCashback}</b>
+                        <b> {companyCashback}</b>
                     </p>
                 </div>
                 <div className={style.wrapperElements}>
