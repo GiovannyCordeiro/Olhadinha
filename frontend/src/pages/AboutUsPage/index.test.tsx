@@ -1,25 +1,20 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { describe, test } from "vitest";
+import { describe } from "vitest";
 import AboutUsPage from ".";
 
 describe("App test", () => {
-    test("It component to render in page?", () => {
+    it("It component to render in page?", async () => {
         render(
             <BrowserRouter>
                 <AboutUsPage />
             </BrowserRouter>
         );
-        expect(screen.getByText("História do projeto:")).toBeInTheDocument();
+        expect(
+            screen.getByText("História do projeto:")
+            && screen.getByText("Propósito:")
+            && screen.getByText("Equipe:")).toBeInTheDocument();
     });
 
-    // test("testing text element create dinamic", () => {
-    //     render(
-    //         <BrowserRouter>
-    //             <AboutUsPage />
-    //         </BrowserRouter>
-    //     );
-    //     expect(screen.getByTestId("p_sum")).toHaveTextContent("5");
-    // });
 });
