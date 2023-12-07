@@ -31,7 +31,7 @@ export default function RootPage() {
             <Header />
             <main className={styles.RootMain}>
                 <div className={styles.RootContent}>
-                    <div className={styles.text}>
+                    <div className={styles.text} data-testid="MainContentUser">
                         <span>
                             Dê uma
                             <img src={olhadinhaName} alt="Olhadinha" />
@@ -49,7 +49,7 @@ export default function RootPage() {
                                 onChange={handlerInput}
                                 onKeyUp={trigerSearch} />
                         </div>
-                        <Link to={`/search/${inputValue}`} className={styles.searchButton}>
+                        <Link to={`/search/${inputValue}`} data-testid="RedirectPage" className={styles.searchButton}>
                             <img src={logoIcon} alt="Logo Olhadinha Icon" />
                         </Link>
                     </div>
