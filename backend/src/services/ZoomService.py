@@ -14,7 +14,8 @@ class ZoomService:
         url = ULRsScrapping.logic["zoom"](store)
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
-        specificElement = soup.find('span',class_="Button_Label__5DJmK")
+        specificElement = soup.find('span',class_="Button_Label__TwuPX")
+        print("element html", specificElement)
         if specificElement is None:
             return 'SNF'
         cashbackPercentage = re.split("%", specificElement.text[7:11])[0]

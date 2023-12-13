@@ -28,7 +28,7 @@ export default function Header() {
     return (
         <header className={styles.header}>
             <div className={styles.wrapper_header}>
-                <NavLink to="/">
+                <NavLink to="/" data-testid="logo">
                     <img src={logo} alt="Olhadinha Logo" />
                 </NavLink>
                 <div className={styles.wrapper_hambunguer} onClick={clickButton}>
