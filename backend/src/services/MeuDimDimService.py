@@ -9,7 +9,10 @@ from helpers.URLsScrapping import ULRsScrapping
 class MeuDimDimService:
     @staticmethod
     def extract(store:str) -> str:
-        url = ULRsScrapping.logic['meudimdim'](store)
+        urlForSearch = store
+        if urlForSearch == "madesa":
+            urlForSearch = "loja-madesa"
+        url = ULRsScrapping.logic['meudimdim'](urlForSearch)
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36"
         }
