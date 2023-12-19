@@ -67,6 +67,7 @@ services:
       PYTHONPATH: /src
       HOST: '0.0.0.0'
       PORT: 8080
+      ORIGIN_ALLOWED: "http://localhost:5173"
     volumes:
       - ./backend/src:/src
     ports:
