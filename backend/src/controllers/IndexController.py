@@ -1,9 +1,8 @@
-from flask import request, abort
-import os
+from flask import jsonify
 
 class IndexController:
     def index():
-        return {
+        return jsonify({
         'status': 'OK',
         'data': "Welcome to OLHADINHA API"
-        }
+        })
