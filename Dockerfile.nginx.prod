@@ -5,6 +5,8 @@ WORKDIR /app
 COPY frontend/package.json .
 RUN npm install
 ENV VITE_CONNECTION_BACK http://15.229.11.35:8080/api
+ENV VITE_VALUE_CONFIRMATION_BACK Olhadinha12#45CfmFrnBck
+ENV VITE_PASSWORD_CONFIRMATION_BACK olhadinhaFrnt3212#4@5
 COPY frontend/ .
 
 RUN npm run build

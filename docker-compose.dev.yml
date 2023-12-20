@@ -39,6 +39,8 @@ services:
       CHOKIDAR_USEPOLLING: 'true'
       WATCHPACK_POLLING: 'true' 
       VITE_CONNECTION_BACK: http://localhost:8080/api
+      VITE_VALUE_CONFIRMATION_BACK: Olhadinha12#45CfmFrnBck
+      VITE_PASSWORD_CONFIRMATION_BACK: olhadinhaFrnt3212#4@5
     volumes:
       - ./frontend:/app
       - node_modules:/app/node_modules

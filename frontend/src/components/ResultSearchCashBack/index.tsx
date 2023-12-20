@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { UnitPlatform, ParamsProp, listItemsCashback } from "./typesSearchCashback"
+import CryptoJS from 'crypto-js';
 
 import style from "./resultSearchCashback.module.css"
 
@@ -21,10 +22,22 @@ export default function ResultSearchCashback(props: ParamsProp) {
     };
     const [allListsCashback, setAllListsCashback] = useState<listItemsCashback>(defaultListItemsCashback);
     const [loader, setLoader] = useState<Boolean>(false);
+
+    const valueEncrypt = CryptoJS.AES.encrypt(
+        import.meta.env.VITE_VALUE_CONFIRMATION_BACK,
+        import.meta.env.VITE_PASSWORD_CONFIRMATION_BACK).toString()
+
     useEffect(() => {
         setLoader(true);
         async function requestForAPI() {
-            const responseAPI = await axios.get(`${import.meta.env.VITE_CONNECTION_BACK}/platform/${companyCashback}`)
+            const responseAPI = await axios.get(
+                `${import.meta.env.VITE_CONNECTION_BACK}/platform/${companyCashback}`,
+                {
+                    headers: {
+                        'Confirmation-From-Front': valueEncrypt
+                    }
+                }
+            )
             const listPlatforms: [UnitPlatform] = responseAPI.data
             let separetedList = listPlatforms.reduce(
                 (acc: {
